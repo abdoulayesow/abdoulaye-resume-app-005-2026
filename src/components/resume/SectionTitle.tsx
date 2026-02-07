@@ -8,7 +8,7 @@ const SectionTitle = ({
   className?: string
 }) => {
   return (
-    <div className={twJoin('flex items-center gap-2 mb-2', className)}>
+    <div className={twJoin('flex items-center gap-2 mb-1.5', className)}>
       <h2 className="text-resume-lg font-bold uppercase tracking-[0.15em] text-primary whitespace-nowrap">
         {children}
       </h2>

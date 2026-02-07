@@ -4,8 +4,6 @@ import './globals.css'
 
 import type React from 'react'
 
-import favicon from '../../public/favicon.png'
-
 const serif = DM_Serif_Display({
   weight: '400',
   subsets: ['latin'],
@@ -20,10 +18,17 @@ const sans = Source_Sans_3({
 export function generateMetadata(): Metadata {
   return {
     title: 'Abdoulaye Sow - Resume',
-    description: 'Professional Resume - Abdoulaye Sow',
+    description:
+      'SAFe SPC6 Certified Trainer and enterprise Agile Transformation Leader',
     icons: {
-      icon: favicon.src,
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      ],
+      apple: '/apple-touch-icon.png',
     },
+    manifest: '/site.webmanifest',
   }
 }
 

@@ -10,6 +10,7 @@
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
     "extract-resume": "playwright test -g src/extractResume/extractResume.ts",
+    "generate-favicon": "node scripts/generate-favicon.mjs",
     "postinstall": "npx playwright install"
   },
   "dependencies": {

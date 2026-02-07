@@ -14,7 +14,7 @@ const Header = ({ data }: { data: Curriculum }) => {
   )
 
   return (
-    <div className="bg-primary text-white px-8 py-5 -mx-8 -mt-6">
+    <div className="bg-primary text-white px-8 py-4 -mx-8 -mt-6">
       <div className="flex items-center gap-6">
         <img
           src={profileImg.src}
@@ -25,7 +25,7 @@ const Header = ({ data }: { data: Curriculum }) => {
           <h1 className="font-serif text-resume-4xl tracking-wide text-white leading-none mb-1">
             {data.name}
           </h1>
-          <p className="text-resume-base text-accent font-medium tracking-wide uppercase">
+          <p className="text-resume-base text-accent font-medium tracking-wide uppercase leading-tight">
             {data.headline}
           </p>
           <p className="text-resume-xs text-blue-200/80 mt-0.5">
@@ -34,7 +34,7 @@ const Header = ({ data }: { data: Curriculum }) => {
         </div>
       </div>
 
-      <div className="flex items-center gap-4 mt-3 pt-3 border-t border-white/15 text-resume-xs text-blue-100/90">
+      <div className="flex items-center gap-4 mt-2.5 pt-2.5 border-t border-white/15 text-resume-xs text-blue-100/90">
         <span className="flex items-center gap-1">
           <LocationIcon className="text-accent text-sm" />
           {data.city}
