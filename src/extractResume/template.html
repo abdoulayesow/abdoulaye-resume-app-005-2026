@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{{name}}} CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page {
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="w-[21cm] print:w-full">
+<div>
+    <header class="bg-slate-300 p-6 flex flex-col gap-6">
+        <div class="flex gap-10">
+            <img id="profilePicture" src="{{{pictureUrl}}}"/>
+            <div class="flex flex-col gap-3">
+                <h1 class="text-4xl uppercase font-bold">{{{name}}}</h1>
+                <h2 class="text-lg">{{{headline}}} &middot; {{{city}}} &middot; {{xp}} années d'expérience</h2>
+                <p>✉️ thchampi@gmail.com</p>
+                <p>📞 06.26.24.76.17</p>
+                <p>🔗 {{{url}}}</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg p-4">
+            {{{about}}}
+        </div>
+    </header>
+    <main class="p-6 flex flex-col gap-6">
+        <h2 class="text-xl border-b-4 border-solid border-slate-400 text-slate-600">Missions</h2>
+        {{#projects}}
+        <div class="odd:bg-slate-100 p-4 rounded-sm">
+            <h3 class="font-bold">{{{title}}}</h3>
+            <p class="flex gap-5 items-center">
+                <img id="{{dates}}" class="w-14" src="{{{companyPictureUrl}}}"/>
+                {{{company}}}
+            </p>
+            <p class="mb-4">{{{dates}}} &middot; {{{duration}}}</p>
+            <div>
+                {{{description}}}
+            </div>
+        </div>
+        {{/projects}}
+    </main>
+
+    <main class="p-6 flex flex-col gap-6 bg-slate-200">
+        <h2 class="text-xl border-b-4 border-solid border-slate-400 text-slate-600">Formations</h2>
+        {{#formations}}
+        <div class="odd:bg-slate-100 p-4 rounded-sm">
+            <h3 class="font-bold">{{{degreeInfos}}}</h3>
+            <p class="flex gap-5 items-center">
+                <img id="{{dates}}" class="w-14" src="{{{schoolPictureUrl}}}"/>
+                {{{school}}}
+            </p>
+            <p class="mb-4">{{{dates}}}</p>
+        </div>
+        {{/formations}}
+    </main>
+</div>
+</body>
+</html>

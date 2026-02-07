@@ -1,0 +1,259 @@
+name: Abdoulaye Sow
+headline: "Agile Transformation Leader | SAFe SPC6 Certified Trainer | Enterprise Delivery Expert"
+email: YWJkb3VsYXllLnNvdy5jb0BnbWFpbC5jb20=
+phone: KDI4MSkgMzIzLTgwMjM=
+city: "Conroe, TX"
+linkedinUrl: linkedin.com/in/abdoulaye-sow-44861633
+githubUrl: github.com/abdoulayesow
+experienceStart: "2014-01-01"
+pageBreakAfterProjectIndex: 1
+
+professionalSummary: >-
+  SAFe SPC6 Certified Trainer and enterprise Agile Transformation Leader with 10+ years
+  driving organizational agility across Fortune 500 companies. Proven track record launching
+  and scaling Agile Release Trains, training 100+ professionals on SAFe/Scrum/Kanban frameworks,
+  and coaching teams to measurable productivity improvements (100%+ gains documented). Expert in
+  building agile transformation functions, standardizing enterprise delivery practices, and
+  establishing continuous improvement cultures.
+
+coreCompetencies:
+  - category: "Agile Transformation & Leadership"
+    skills:
+      - "SAFe 6.0 Implementation"
+      - "ART Launch & Scaling"
+      - "Enterprise Coaching"
+      - "Change Management"
+      - "Organizational Design"
+      - "Agile Maturity Assessment"
+      - "Executive Stakeholder Management"
+  - category: "SAFe & Scaled Agile"
+    skills:
+      - "PI Planning (120+ participants)"
+      - "ART Execution & Governance"
+      - "Value Stream Mapping"
+      - "Lean Portfolio Management"
+      - "DevOps Integration"
+      - "Inspect & Adapt Workshops"
+  - category: "Team Coaching & Facilitation"
+    skills:
+      - "Scrum Master Coaching"
+      - "Product Owner Development"
+      - "Conflict Resolution"
+      - "Retrospective Facilitation"
+      - "Continuous Improvement"
+      - "Servant Leadership"
+  - category: "Training & Enablement"
+    skills:
+      - "SAFe Training (Leading SAFe, POPM, SSM)"
+      - "Scrum Certification Programs"
+      - "Kanban Workshops"
+      - "DevOps Practices (TDD, BDD, CI/CD)"
+      - "Train-the-Trainer Programs"
+
+projects:
+  - title: "Senior Agile Coach & Delivery Lead"
+    company: Capgemini
+    client: "McDonald's Global Technology"
+    location: "Conroe, TX (Remote)"
+    dates: "March 2020 - Present"
+    duration: "5+ years"
+    description: |-
+      **Agile Transformation Leadership**
+      - Lead enterprise-wide agile transformation supporting McDonald's digital ecosystem (40,000+ restaurants globally), establishing agile operating model across 5 ARTs with 200+ practitioners
+      - Built agile transformation function from ground up, standardizing tools (Jira, Confluence), processes, and governance frameworks across product organization
+      - Facilitate quarterly PI Planning events for 120+ participants across distributed teams (US, Europe, Asia)
+      - Coach executive leadership on agile mindset and Lean-Agile principles, influencing $50M+ portfolio investment decisions
+
+      **Team Coaching & Performance**
+      - Coached 24 engineers across 3 Scrum teams to **100% productivity improvements** within 6 months
+      - Implemented value stream mapping that **reduced cycle time by 40%**
+      - Achieved **92% sprint predictability** through rigorous backlog management and Definition of Done enforcement
+
+      **Continuous Improvement**
+      - Established agile metrics dashboard providing real-time transparency to stakeholders
+      - Champion Inspect & Adapt workshops: 30% defect reduction, 25% faster time-to-market
+      - Lead Communities of Practice for 200+ practitioners
+
+  - title: "Agile Transformation Lead & SAFe Trainer"
+    company: Capgemini
+    client: "Societe Generale"
+    location: "Paris, France"
+    dates: "January 2018 - February 2020"
+    duration: "2 years 2 months"
+    description: |-
+      **Enterprise Transformation**
+      - Led agile transformation for 200+ banking professionals across corporate and investment banking divisions
+      - Designed and delivered **5 certification programs** (SAFe, Scrum, Kanban, DevOps, Product Ownership) as SAFe SPC6 Certified Trainer, reducing external training costs by 60%
+      - **Trained 100+ professionals** on SAFe practices with 95% certification pass rate
+      - Established Agile Center of Excellence in regulated financial services environment
+
+      **ART Launch & Stabilization**
+      - Launched 3 new Agile Release Trains supporting $15M banking platform modernization
+      - Improved delivery predictability by **35% within first 3 Program Increments**
+      - Facilitated cross-ART synchronization aligning 300+ practitioners across solution train
+
+  - title: "Scrum Master & Agile Coach"
+    company: Capgemini
+    client: "Credit Agricole"
+    location: "Paris, France"
+    dates: "April 2016 - December 2017"
+    duration: "1 year 9 months"
+    description: |-
+      - Scrum Master for 8-person cross-functional team delivering banking features to 200,000+ users
+      - Improved **sprint predictability from 65% to 92%** within 6 months
+      - Implemented Kanban flow metrics and WIP limits, **reducing lead time by 30%** and improving throughput by 25%
+      - Coached Product Owner on backlog prioritization, story decomposition, and ROI-based decision making
+
+  - title: "Scrum Master & DevOps Coach"
+    company: Capgemini
+    client: "ENEDIS (French Electricity Grid)"
+    location: "Paris, France"
+    dates: "January 2014 - March 2016"
+    duration: "2 years 3 months"
+    description: |-
+      - Coached infrastructure and development teams on CI/CD, TDD, BDD, and automated testing
+      - Implemented continuous delivery pipeline reducing deployment time from days to hours with 50% defect reduction
+      - Coached 4 Scrum teams supporting critical national infrastructure projects (35M customers)
+      - Established agile metrics and reporting framework meeting audit and compliance requirements
+
+certifications:
+  - acronym: "SAFe SPC6"
+    fullName: "Scaled Agile Program Consultant & Certified Trainer"
+    year: 2018
+    group: "SAFe & Scaled Agile"
+  - acronym: "SPS"
+    fullName: "Scaled Professional Scrum"
+    year: 2022
+    group: "SAFe & Scaled Agile"
+  - acronym: "PSM II"
+    fullName: "Professional Scrum Master II"
+    year: 2025
+    group: "Scrum & Product Ownership"
+  - acronym: "PSPO II"
+    fullName: "Professional Scrum Product Owner II"
+    year: 2025
+    group: "Scrum & Product Ownership"
+  - acronym: "PSM I"
+    fullName: "Professional Scrum Master I"
+    year: 2016
+    group: "Scrum & Product Ownership"
+  - acronym: "PAL-EBM"
+    fullName: "Professional Agile Leadership Evidence-Based Management"
+    year: 2024
+    group: "Specialized Agile"
+  - acronym: "PSK1"
+    fullName: "Professional Scrum with Kanban"
+    year: 2022
+    group: "Specialized Agile"
+  - acronym: "PAL I"
+    fullName: "Professional Agile Leadership"
+    year: 2023
+    group: "Specialized Agile"
+  - acronym: "CSM"
+    fullName: "Certified Scrum Master"
+    year: 2015
+    group: "Additional"
+  - acronym: "DevOps Foundation"
+    fullName: "DevOps Institute"
+    year: 2017
+    group: "Additional"
+
+achievements:
+  - text: "Trained 100+ professionals across 20+ SAFe courses"
+    metric: "100+"
+  - text: "100% Productivity Improvement coaching 24 engineers"
+    metric: "100%"
+  - text: "40% Cycle Time Reduction via value stream mapping"
+    metric: "40%"
+  - text: "35% Predictability Improvement in first 3 PIs"
+    metric: "35%"
+  - text: "5 Certification Programs designed and delivered"
+    metric: "5"
+  - text: "3 ARTs Launched at Fortune 500 enterprises"
+    metric: "3"
+  - text: "200+ Practitioners coached across 4 major transformations"
+    metric: "200+"
+  - text: "92% Sprint Predictability through disciplined execution"
+    metric: "92%"
+
+trainingSpeaking:
+  - type: training
+    title: "SAFe SPC6 Certified Trainer"
+    description: "2018 - Present"
+    details:
+      - "Delivered 20+ Leading SAFe courses training 300+ practitioners across Fortune 500 companies"
+      - "Designed custom SAFe implementation workshops for executive leadership teams"
+      - "Mentored 15+ aspiring trainers through SAFe SPC certification process"
+  - type: speaking
+    title: "Conference Speaking"
+    description: ""
+    details:
+      - "Agile Alliance Annual Conference: Scaling Agile in Regulated Industries (2019)"
+      - "Regional Scrum Gatherings: Measuring Agile Success Through Evidence-Based Management (2020, 2022)"
+      - "Internal Tech Talks: Monthly sessions on agile best practices (2020-Present)"
+
+education:
+  - school: "Polytech' Marseille, France"
+    degree: "Master of Engineering, Industrial & Computer Engineering"
+    dates: "2013"
+    focus: "Systems Engineering, Process Optimization, Software Development"
+
+continuingEducation:
+  - name: "Advanced Facilitation Skills"
+    provider: "International Association of Facilitators"
+  - name: "Executive Coaching Certification"
+    provider: "ICF pathway"
+    status: "In Progress"
+  - name: "Lean Six Sigma Green Belt"
+
+technicalSkills:
+  - category: "Agile Frameworks & Methodologies"
+    skills:
+      - "SAFe 6.0"
+      - "Scrum"
+      - "Kanban"
+      - "Lean"
+      - "XP"
+      - "DevOps"
+      - "Design Thinking"
+      - "Lean Startup"
+  - category: "Enterprise Agile Tools"
+    skills:
+      - "Jira (Advanced Admin)"
+      - "Confluence"
+      - "Rally"
+      - "Azure DevOps"
+      - "VersionOne"
+      - "ServiceNow"
+      - "Miro"
+      - "Mural"
+  - category: "Metrics & Analytics"
+    skills:
+      - "Jira Dashboards"
+      - "Actionable Agile Metrics"
+      - "Value Stream Mapping"
+      - "Flow Metrics"
+      - "Velocity Tracking"
+      - "Burndown/Burnup Charts"
+      - "CFD"
+  - category: "Technical Foundation"
+    skills:
+      - "Java"
+      - "Spring Boot"
+      - "Python"
+      - "CI/CD"
+      - "Git"
+      - "Docker"
+      - "Kubernetes"
+      - "AWS"
+      - "Azure"
+
+additionalInfo:
+  - label: "Location"
+    value: "Conroe, TX - Open to remote, hybrid, or relocation"
+  - label: "Languages"
+    value: "English (Fluent), French (Native)"
+  - label: "Published Research"
+    value: "arxiv.org/abs/2310.15612"
+  - label: "Travel"
+    value: "Available for up to 50% travel"

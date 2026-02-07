@@ -1,0 +1,137 @@
+# yaml-language-server: $schema=./cv.yml
+name: Thomas Champion
+headline: Développeur Front-end Freelance
+email: dGhjaGFtcGlAZ21haWwuY29t
+phone: MDYuMjYuMjQuNzYuMTc=
+city: Paris
+url: linkedin.com/in/tchampio
+experienceStart: 2012-04-16
+
+technicalSkills:
+  - name: React
+    color: text-cyan-600
+  - name: Vue
+    color: text-emerald-600
+  - name: Nuxt
+    color: "text-[#00DC82]"
+  - name: TypeScript
+    color: text-blue-600
+  - name: JavaScript
+    color: text-yellow-400
+  - name: HTML
+    color: "text-[#E34F26]"
+  - name: CSS
+    color: "text-[#1572B6]"
+  - name: Node
+    color: text-green-600
+  - name: Nest
+    color: "text-[#E0234E]"
+  - name: Tailwind
+    color: text-sky-600
+  - name: MUI
+    color: "text-[#007FFF]"
+  - name: Vuetify
+    color: "text-[#1867C0]"
+  - name: Vitest
+    color: "text-[#39cc6e]"
+  - name: Testing Library
+    color: text-red-600
+  - name: Playwright
+    color: text-green-700
+  - name: Gitlab CI
+    color: text-orange-600
+  - name: Jenkins
+    color: "text-[#D24939]"
+  - name: Docker
+    color: text-blue-700
+  - name: AWS Cloudfront
+    color: text-orange-700
+
+about: >-
+  Expert front-end passionné par le Craft, j'accompagne les équipes dans la mise en place de pratiques d'excellence : architecture maintenable, tests automatisés et accessibilité.
+
+projects:
+  - title: Développeur Front-end Vue
+    dates: 2024 - 2025
+    duration: 1 an 10 mois
+    stack: >- 
+      **Nuxt 3**, TypeScript, Tailwind, Gitlab CI
+    description: |-
+      Projet composé d'un développeur par application (Web, SmartTV, Android, Apple) j'ai :
+      - développé les nouvelles fonctionnalités de la plateforme de streaming OCS (site web, Chromecast puis SmartTV) ;
+      - amélioré l'accessibilité, mis en place des tests automatisés ; 
+      - participé de manière active à la conception de la plateforme en marque blanche AION (benchmark, ateliers etc).
+    company: Orange Prestations TV
+
+  - title: Développeur Lead Front-end React
+    dates: 2023 - 2023
+    duration: 7 mois
+    stack: >-
+      **React**, TypeScript, Tailwind &amp; MUI, Testing Library, Playwright, Gitlab CI, Docker
+    description: |-
+      Au sein d'une équipe de 5 développeurs dont j'étais le seul profil front, j'ai conçu et déployé le portail Web d'un outil de configuration de VPN en utilisant les bonnes pratiques Craft.
+      Accompagnement d'un développeur back-end pour monter en compétence sur la stack front.
+    company: WeScale
+
+  - title: Lead Développeur Front-end Vue
+    dates: 2021 - 2022
+    duration: 11 mois
+    stack: >- 
+      **Nuxt 2**, TypeScript, Vuetify, Tailwind, Testing Library, S3
+    description: |-
+      Au sein d'une équipe d'un peu moins de 10 développeurs, j'ai développé les fonctionnalités pour un backoffice et un frontoffice d'une plateforme privée de streaming live type Twitch pour le B2B en respectant et supervisant les bonnes pratiques sur le front.
+    company: Voilà
+
+  - title: Développeur Front-end React chez Sanofi
+    dates: 2020 - 2021
+    duration: 1 an 1 mois
+    stack: >-
+      **React**, TypeScript, MUI, Testing Library, S3, Python
+    description: |-
+      Dans une équipe agile de 3 développeurs, j'ai développé et déployé les fonctionnalités d’une application web interne permettant aux Data Scientists 
+      de Sanofi d’explorer et manipuler les données d'un Datalake. Mais aussi :
+      - migré progressivement la base de code vers TypeScript ;
+      - intervenu ponctuellement côté back-end (Python) et sur les images Docker des VMs.
+    company: Xebia
+
+  - title: Lead Développeur Fullstack JS chez LCL
+    dates: 2018 - 2020
+    duration: 1 an 9 mois
+    stack: >-
+      **Angular Universal**, Nest.js, CMS Prismic, Docker, Docker Swarm, Redis
+    description: |-
+      Dans ce projet Scrum composé de 5 développeurs, 2 POs, 1 Scrum master, j'ai :
+      - travaillé sur la refonte du site web institutionnel de la banque jusqu'à la mise en production dont j'ai opéré le suivi et le pilotage technique ;
+      - la mise en chantier du nouveau portail d'authentification et du nouvel espace client pour la gestion des comptes.
+    company: Xebia
+
+  - title: Lead Développeur Front-end chez Artel
+    dates: 2016 - 2018
+    duration: 2 ans
+    stack: >-
+      **Angular.js 1.5**, Sass, Docker, AWS ECS / Dynamo / SQS
+    description: |-
+      Dans ce projet Scrum composé d'une dizaine de développeurs et 2 POs, j'ai :
+      - développé les nouvelles fonctionnalités dans l'application web de gestion de flottes de véhicules ;
+      - lead la stack front-end avec comme action notable : migration incrémentale d'AngularJS 1.3 (Gulp) vers 1.5 (Webpack) et encadrement du développement front ;
+      - endossé le rôle de Scrum master.
+    company: Xebia
+
+  - title: Développeur Fullstack J2EE
+    dates: 2012 - 2016
+    duration: 4 ans et 3 mois
+    stack: >-
+      **Java 4, 5, 6**, Struts 1 & 2, HTML/CSS/jQuery, Spring, SOAP, Hibernate, Oracle, Jenkins
+    description: |-
+      - RSI : référent technique sur un plateau de 25 personnes. J'ai développé des fonctionnalités pour différentes applications du RSI incluant CI et revues de code. 
+      - SGE-L chez ErDF : développement de fonctionnalités pour le portail backoffice de gestion de contrats et de clients.
+      - Futunoa : Refonte en J2EE de l'application de gestion des contrats d'énergie solaire d'EDF.
+    company: Capgemini
+
+education:
+  - school: UPMC Paris 6
+    degreeInfos: "Master Informatique"
+    dates: 2008 - 2012
+  - school: Lycée Turgot, Paris
+    degreeInfos: "BTS Informatique de Gestion"
+    dates: 2006 - 2008

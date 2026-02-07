@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0f2b46;
+  --color-secondary: #1a4f6e;
+  --color-accent: #c8943e;
+  --color-muted: #64748b;
+  --color-line: #d4c5a0;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+.a4-page {
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  position: relative;
+  background: white;
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .a4-page {
+    page-break-after: always;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .a4-page:last-child {
+    page-break-after: auto;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+ul, li {
+  all: revert;
+}
+
+.markdown {
+  & p {
+    all: revert;
+    margin: 0;
+  }
+
+  & h1, & h2, & h3, & h4, & h5, & h6 {
+    all: revert;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  & strong {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  & ul {
+    margin: 0;
+    padding-left: 1.1em;
+  }
+
+  & li {
+    margin-bottom: 0.1em;
+  }
+
+  & li::marker {
+    color: var(--color-accent);
+  }
+}

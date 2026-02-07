@@ -1,0 +1,224 @@
+name: Abdoulaye Sow
+headline: "Principal Product Manager, AI/ML | Published ML Researcher | SaaS Product Leader"
+email: YWJkb3VsYXllLnNvdy5jb0BnbWFpbC5jb20=
+phone: KDI4MSkgMzIzLTgwMjM=
+city: "Conroe, TX"
+linkedinUrl: linkedin.com/in/abdoulaye-sow-44861633
+githubUrl: github.com/abdoulayesow
+experienceStart: "2014-01-01"
+pageBreakAfterProjectIndex: 1
+
+professionalSummary: >-
+  Principal Product Manager with 10+ years leading AI/ML-powered B2B SaaS products across
+  healthcare, fintech, and enterprise technology. Published machine learning researcher with
+  deep technical expertise in LLMs, NLP, and predictive analytics. Proven track record defining
+  product strategy, managing full lifecycle development, and driving measurable business outcomes
+  through Evidence-Based Management. Expert in translating complex AI capabilities into
+  user-centric product experiences that deliver ROI.
+
+coreCompetencies:
+  - category: "Product Strategy & Leadership"
+    skills:
+      - "AI/ML Product Roadmapping"
+      - "Evidence-Based Management"
+      - "Product-Market Fit"
+      - "User Research & Personas"
+      - "OKRs & KPIs"
+      - "Go-to-Market Strategy"
+      - "Cross-Functional Leadership"
+  - category: "AI/ML Expertise"
+    skills:
+      - "Large Language Models (LLMs)"
+      - "Natural Language Processing"
+      - "Predictive Analytics"
+      - "ML Pipelines & MLOps"
+      - "Feature Engineering"
+      - "AI Ethics & Bias Mitigation"
+      - "Recommender Systems"
+  - category: "Technical & Agile"
+    skills:
+      - "B2B SaaS Product Lifecycle"
+      - "API Design & Integration"
+      - "Cloud Architecture (AWS, Azure)"
+      - "DevOps & CI/CD"
+      - "Agile/Scrum (PSPO II)"
+      - "SAFe Product Management"
+      - "A/B Testing & Experimentation"
+
+projects:
+  - title: "Senior Product Manager & Agile Coach"
+    company: Capgemini
+    client: "McDonald's Global Technology"
+    location: "Conroe, TX (Remote)"
+    dates: "March 2020 - Present"
+    duration: "5+ years"
+    description: |-
+      - Lead AI-powered product initiatives for McDonald's digital ecosystem, defining roadmaps for ML-driven personalization, demand forecasting, and customer experience optimization across 40,000+ global restaurants
+      - Drive Evidence-Based Management framework, improving feature adoption by **45%** and reducing time-to-market by **30%** through data-driven prioritization
+      - Manage cross-functional teams (24 engineers, designers, data scientists) using SAFe Product Owner practices, facilitating PI Planning for 120+ stakeholders
+      - Define and validate AI/ML product requirements for recommendation engines and predictive analytics, translating complex capabilities into user stories with ROI projections
+      - Champion user-centric design through continuous discovery, conducting 50+ customer interviews and A/B tests that increased engagement by **35%**
+      - Collaborate with data science teams on ML model productization, establishing MLOps workflows that reduced deployment cycles from weeks to days
+
+  - title: "Product Owner & Agile Transformation Lead"
+    company: Capgemini
+    client: "Societe Generale"
+    location: "Paris, France"
+    dates: "January 2018 - February 2020"
+    duration: "2 years 2 months"
+    description: |-
+      - Led product development for banking platform serving 200,000+ users, managing $5M budget and defining 18-month roadmap for AI-powered fraud detection and risk assessment
+      - Pioneered ML-driven features including NLP chatbot (**85% accuracy, 40% cost reduction**) and predictive credit scoring (20% improved approval rates, reduced default risk)
+      - Established product analytics infrastructure (Amplitude, Mixpanel) for real-time user behavior insights
+      - Defined go-to-market strategy for 5 major launches, achieving **120% of adoption targets** in first quarter
+      - Conducted competitive analysis across fintech landscape, informing $2M investment in AI capabilities
+      - Trained 100+ product managers and stakeholders on Evidence-Based Management and agile product ownership
+
+  - title: "Product Manager & Technical Lead"
+    company: Capgemini
+    client: "Credit Agricole"
+    location: "Paris, France"
+    dates: "April 2016 - December 2017"
+    duration: "1 year 9 months"
+    description: |-
+      - Managed B2B banking platform serving 15,000+ corporate clients, prioritizing features based on customer feedback and business value metrics
+      - Led API-first architecture migration, defining integration requirements for 30+ third-party systems
+      - Developed predictive analytics dashboard (Python, SQL) enabling 15% revenue increase through upsell identification
+      - Facilitated user research with 100+ enterprise clients, synthesizing insights into product personas and journey maps
+      - Maintained 92% sprint predictability through rigorous acceptance criteria and stakeholder alignment
+
+  - title: "Technical Product Manager & DevOps Lead"
+    company: Capgemini
+    client: "ENEDIS (French Electricity Grid)"
+    location: "Paris, France"
+    dates: "January 2014 - March 2016"
+    duration: "2 years 3 months"
+    description: |-
+      - Managed infrastructure monitoring and automation product for national electricity grid (35M customers), defining AI-powered predictive maintenance requirements
+      - Led cloud migration strategy (on-prem to AWS), reducing infrastructure costs by 40% while achieving 99.9% uptime
+      - Implemented CI/CD pipelines and automated testing, reducing deployment time from days to hours
+      - Collaborated with data science teams to productize ML models for demand forecasting and anomaly detection
+
+certifications:
+  - acronym: "PSPO II"
+    fullName: "Professional Scrum Product Owner II"
+    year: 2025
+    group: "Product & Scrum"
+  - acronym: "PAL-EBM"
+    fullName: "Professional Agile Leadership Evidence-Based Management"
+    year: 2024
+    group: "Product & Scrum"
+  - acronym: "SAFe SPC6"
+    fullName: "Scaled Agile Program Consultant & Certified Trainer"
+    year: 2018
+    group: "SAFe & Scaled Agile"
+  - acronym: "PSM II"
+    fullName: "Professional Scrum Master II"
+    year: 2025
+    group: "Product & Scrum"
+  - acronym: "PSK1"
+    fullName: "Professional Scrum with Kanban"
+    year: 2022
+    group: "Specialized"
+  - acronym: "SPS"
+    fullName: "Scaled Professional Scrum"
+    year: 2022
+    group: "SAFe & Scaled Agile"
+
+achievements:
+  - text: "Published ML research paper with industry citations"
+    metric: "1"
+  - text: "Launched 8+ AI/ML-powered product features generating $5M+ revenue"
+    metric: "$5M+"
+  - text: "Trained 100+ product managers on modern product practices"
+    metric: "100+"
+  - text: "Reduced time-to-market by 30% through Evidence-Based Management"
+    metric: "30%"
+  - text: "Improved feature adoption rates by 45% through data-driven prioritization"
+    metric: "45%"
+  - text: "Led cross-functional teams of 24+ engineers, designers, and data scientists"
+    metric: "24+"
+  - text: "Managed product budgets up to $5M with consistent ROI"
+    metric: "$5M"
+  - text: "92% sprint predictability through rigorous backlog management"
+    metric: "92%"
+
+publications:
+  - title: "Advancing Multilingual Text Processing Through Parallel Corpus Analysis"
+    venue: "arXiv:2310.15612"
+    date: "October 2023"
+    description: >-
+      Research on NLP techniques for parallel text corpora, contributing to improvements in
+      machine translation and cross-lingual information retrieval systems.
+
+education:
+  - school: "Polytech' Marseille, France"
+    degree: "Master of Engineering, Industrial & Computer Engineering"
+    dates: "2013"
+    focus: "Machine Learning, Software Engineering, Systems Optimization"
+
+continuingEducation:
+  - name: "Advanced Machine Learning"
+    provider: "Stanford Online"
+  - name: "Product Management for AI"
+    provider: "Reforge"
+  - name: "MLOps Specialization"
+    provider: "DeepLearning.AI"
+
+technicalSkills:
+  - category: "AI/ML Stack"
+    skills:
+      - "Python"
+      - "TensorFlow"
+      - "PyTorch"
+      - "Scikit-learn"
+      - "LLMs (GPT, Claude, Llama)"
+      - "NLP (spaCy, Transformers)"
+      - "MLOps (MLflow, W&B)"
+  - category: "Product Management Tools"
+    skills:
+      - "Jira"
+      - "ProductBoard"
+      - "Amplitude"
+      - "Mixpanel"
+      - "Pendo"
+      - "Figma"
+      - "Miro"
+      - "Confluence"
+  - category: "Data & Analytics"
+    skills:
+      - "SQL (PostgreSQL, MySQL)"
+      - "Tableau"
+      - "Looker"
+      - "Google Analytics"
+      - "A/B Testing (Optimizely)"
+      - "Statistical Analysis"
+  - category: "Technical"
+    skills:
+      - "API Design (REST, GraphQL)"
+      - "AWS"
+      - "Azure"
+      - "GCP"
+      - "Docker"
+      - "Kubernetes"
+      - "CI/CD"
+      - "Git"
+  - category: "Software Development"
+    skills:
+      - "Java"
+      - "Spring Boot"
+      - "JavaScript"
+      - "React"
+      - "Node.js"
+      - "Python"
+      - "HTML/CSS"
+
+additionalInfo:
+  - label: "Location"
+    value: "Conroe, TX - Open to 100% remote or hybrid"
+  - label: "Languages"
+    value: "English (Fluent), French (Native)"
+  - label: "Patents"
+    value: "1 pending (AI-powered demand forecasting system)"
+  - label: "Published Research"
+    value: "arxiv.org/abs/2310.15612"
