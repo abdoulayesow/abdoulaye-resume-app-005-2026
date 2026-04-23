@@ -5,7 +5,22 @@
       "Bash(npm run build:*)",
       "Bash(npm run lint:*)",
       "Bash(npm run lint:fix:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(npm run format:*)",
+      "Bash(npm run extract-resume:*)",
+      "Bash(npm run generate-favicon:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(wc:*)",
+      "Bash(mkdir:*)",
+      "Bash(pandoc:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(gh repo view:*)",
+      "WebFetch(domain:linkedin.com)",
+      "WebFetch(domain:www.linkedin.com)"
     ]
   }
 }

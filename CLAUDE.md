@@ -1,77 +1,173 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code working in this repository.
 
-## Project Overview
+## Mission
 
-This is a Next.js 14 application that generates a professional curriculum vitae (CV) by extracting data from LinkedIn profile HTML and rendering it as a beautiful web page. The project uses Playwright for web scraping and YAML for data storage.
+This repo serves **two related goals**:
 
-## Common Commands
+1. **Web-rendered CV** — a Next.js 14 app that renders Abdoulaye Sow's resume as a polished single-page web/print artifact (the original purpose of the project).
+2. **Application toolkit** — maintain multiple resume variants and tailor them to specific job postings, with matching cover letters, optimized for **Applicant Tracking Systems (ATS) and AI screening**.
 
-- `npm run dev` - Start the Next.js development server (http://localhost:3000)
-- `npm run build` - Build the production application
-- `npm run start` - Start the production server
-- `npm run lint` - Run Biome linter
-- `npm run lint:fix` - Run Biome linter with auto-fix
-- `npm run format` - Format code with Biome
-- `npm run extract-resume` - Extract CV data from LinkedIn HTML using Playwright (reads `in/profile.html`, outputs to `src/data/cv.yml`)
+When the user asks you to "tailor" or "apply" or "draft a cover letter," you're working in goal #2. When they ask about layout, components, or `/agile-coach` / `/product-manager-ai-ml` URLs, it's goal #1.
 
-## Architecture
+## Candidate profile (single source of truth)
+
+- **Name**: Abdoulaye Sow
+- **Email**: abdoulaye.sow.co@gmail.com
+- **Phone**: (281) 323-8023
+- **Location**: Conroe, TX 77384 (Houston area) — open to remote, hybrid, or relocation
+- **LinkedIn**: linkedin.com/in/abdoulaye-sow-44861633
+- **GitHub**: github.com/abdoulayesow
+- **Citizenship**: U.S. Citizen (security clearance eligible)
+- **Languages**: English (fluent), French (native)
+- **Notice**: 2 weeks
+- **Published research**: arxiv.org/abs/2310.15612 (multilingual NLP)
+
+## Resume variants
+
+Two canonical Markdown source variants live in `resume-data/`:
+
+- `Resume_Agile_Coach.md` — Agile Transformation Leader / SAFe SPC6 Trainer
+- `Resume_Product_Manager_AI_ML.md` — Principal PM, AI/ML
+
+Both are also rendered by the Next.js app via `src/data/cv-agile-coach.yml` and `src/data/cv-product-manager-ai-ml.yml`. **Do not let the Markdown and YAML drift apart** — when you change one, update the other or note the divergence in the PR/commit.
+
+Tailored variants are generated under `tailored-resumes/<slug>/` and **must not** overwrite the canonical Markdown sources.
+
+## Workflow: tailoring a resume to a job
+
+The expected flow:
+
+1. User drops a job posting under `job-postings/`.
+2. Run `/jd-extract` → produces a structured analysis (must-have skills, nice-to-have, keywords, seniority, culture cues).
+3. Run `/tailor-resume` → picks the closer base variant, rewrites summary + reorders bullets + injects matched keywords naturally, outputs `tailored-resumes/<slug>/resume.md`.
+4. Run `/ats-audit` → scores the tailored resume against ATS rules, reports a checklist.
+5. Run `/cover-letter` → drafts a 1-page cover letter referencing the same keywords and 2-3 specific achievements.
+
+## ATS / AI-screening rules (mandatory for any tailored output)
+
+These are baked-in industry standards as of 2026. Follow them in every tailored resume **and** keep the canonical Markdown sources compatible:
+
+### Format & structure
+- **Single column.** No tables, text boxes, columns, or sidebar layouts in the Markdown source. (The Next.js render can be multi-column; the Markdown cannot.)
+- **Standard section headings only**: `Professional Summary`, `Core Competencies` or `Skills`, `Professional Experience`, `Education`, `Certifications`, `Additional Information`. Never invent creative names like "My Journey" or "What I Bring."
+- **Section order**: Contact → Summary → Skills → Experience → Education → Certifications → Additional.
+- **Standard bullets only**: `-` or `•`. No emoji bullets, no checkmarks, no decorative glyphs in body text. (Trophy/checkmark icons are OK in the achievements section as accents but never as bullet characters.)
+- **Dates as `Mon YYYY – Mon YYYY`** or `Mon YYYY – Present`. Consistent throughout.
+- **No images, charts, or graphics in the .docx/PDF that gets uploaded.** Profile photo OK on the web version, never on the ATS-uploaded version.
+- **Fonts (when exporting)**: Arial, Calibri, Georgia, Times New Roman, or Verdana. 10–12pt body.
+- **Upload format**: prefer `.docx`. PDF is acceptable only if it's a native (text-selectable) PDF, never a scanned/image PDF.
+
+### Keyword strategy
+- **15–25 distinct relevant keywords per resume.** More than that risks keyword-stuffing penalties from modern semantic screeners.
+- **Match 3–5 exact keywords from the job description verbatim** (e.g., if the JD says "Agile Release Train," use "Agile Release Train" — not "ART program" — at least once).
+- **Include both acronyms and full forms** (e.g., "Search Engine Optimization (SEO)", "Large Language Model (LLM)"). Modern parsers map both, but conservative ones still need explicit pairing.
+- **Contextualize, don't dump.** Every keyword should appear inside a bullet that names a metric or outcome. Never standalone keyword piles outside the Skills section.
+- **Mirror the JD's seniority language.** If the JD says "lead," "drive," "own," reuse those verbs.
+
+### Content quality
+- **Every experience bullet should follow Action + Context + Metric.** Example: `Coached 24 engineers across 3 Scrum teams to 100% productivity improvements within 6 months.`
+- **Numbers > adjectives.** Replace "significantly improved" with `improved by 35%`. If you don't have a number, write what you actually did, not how amazing it was.
+- **Lead with the strongest 4 bullets per role.** ATS reads everything, but humans only scan ~6-7 seconds — front-load impact.
+- **Cap each role at 4–6 bullets** (single-page constraint).
+- **No first person.** No "I" or "my." Implied subject only.
+
+### What NOT to do (these will fail screening)
+- Don't use multi-column layouts in the source Markdown.
+- Don't put critical info in headers or footers (many parsers ignore them).
+- Don't fabricate experience, certifications, dates, or metrics. Tailoring is **emphasis and translation**, never invention.
+- Don't keyword-stuff: cramming the same term 10x in white text or invisible divs is detected and penalized.
+- Don't run AI-detection bypass / "humanizer" tools on the output. Modern screeners don't actually run AI-detection on resumes — they score relevance. Spending energy "humanizing" is wasted; spend it on metrics and keyword fit instead.
+
+## Web app (Next.js) — common commands
+
+- `npm run dev` — start dev server (http://localhost:3000)
+- `npm run build` — production build
+- `npm run lint` / `npm run lint:fix` / `npm run format` — Biome
+- `npm run extract-resume` — extract from `in/profile.html` LinkedIn export → `src/data/cv.yml`
+- `npm run generate-favicon` — regenerate favicons from `public/profile.jpg`
+
+Variants live at `/agile-coach` and `/product-manager-ai-ml`. The single-page redesign is documented in `SINGLE_PAGE_REDESIGN.md`.
+
+## Web-app architecture (unchanged)
 
 ### Two-Phase System
 
-1. **Extraction Phase** (`src/extractResume/extractResume.ts`):
-   - Reads LinkedIn profile HTML from `in/profile.html`
-   - Uses Playwright to parse and extract:
-     - Profile information (name, headline, city, profile picture)
-     - Work experience (company, title, dates, descriptions)
-     - Education/formations (school, degree, dates)
-     - Company and school logos (converted to base64)
-   - Renders data with Mustache template (`src/extractResume/template.html`)
-   - Outputs structured data to `src/data/cv.yml` with embedded base64 images
-   - Can override company/school images by placing JPG files in `in/` directory (e.g., `in/Company Name.jpg`)
+1. **Extraction** (`src/extractResume/extractResume.ts`):
+   - Reads `in/profile.html` (LinkedIn export) → Playwright parses → outputs `src/data/cv.yml` with base64-embedded images.
+   - Override company/school logos by dropping `in/<Exact Name>.jpg`.
 
-2. **Rendering Phase** (`src/app/page.tsx`):
-   - Reads CV data from `src/data/cv.yml` (or `src/data/override-cv.yml` if present)
-   - Renders CV as a Next.js server component with Tailwind CSS
-   - Displays profile, technical skills, talks, work experience, and education
-   - Print-optimized layout with page breaks
+2. **Rendering** (`src/app/[variant]/page.tsx`):
+   - Reads `src/data/cv-<variant>.yml` (or `cv.yml`).
+   - Renders single-page A4 layout via `SinglePageResume` components in `src/components/resume/`.
+   - Print-optimized with Tailwind `print:` variants.
 
-### Key Data Flow
+### Important files
+
+- `src/data/cv-agile-coach.yml`, `src/data/cv-product-manager-ai-ml.yml` — variant data.
+- `src/data/cv.yml` — auto-generated from LinkedIn extraction.
+- `src/data/override-cv.yml` — optional manual override checked first.
+- `src/components/resume/SinglePageResume.tsx` — single-page layout entrypoint.
+- `tailwind.config.ts` — `resume-xs` … `resume-3xl` custom typography scale, navy/gold color tokens.
+
+### TypeScript / styling
+
+- Path alias `@/*` → `./src/*`.
+- Strict mode, target ES5.
+- Tailwind with custom gradient + print styles.
+
+## Skills available in this repo
+
+Located in `.claude/skills/`:
+
+- `/jd-extract` — parse a job posting into structured intel (must-have, keywords, seniority, culture).
+- `/tailor-resume` — produce a tailored resume variant for a specific posting.
+- `/cover-letter` — draft a 1-page cover letter for a tailored application.
+- `/ats-audit` — score a resume against the ATS rules in this file.
+- `/resume-review` — full pre-submission gauntlet: combines `ats-reviewer` + `resume-coach` agents and produces a single combined report with a submission verdict.
+
+## Agents available in this repo
+
+Located in `.claude/agents/`:
+
+- `jd-analyst` — deep-dive a JD; extracts requirements, keywords, signals.
+- `resume-bullet-writer` — rewrites bullets to Action+Context+Metric form, swaps verbs to match JD voice.
+- `ats-reviewer` — mechanical ATS audit (format, parser-safety, keyword match, content rules).
+- `resume-coach` — qualitative human-eye review (length-vs-seniority, narrative arc, tone, recruiter 7-second scan, modern conventions). Pairs with `ats-reviewer`.
+
+Use these via the Task tool when a workflow needs a focused subagent rather than a full slash command.
+
+## Resume length standard (private-sector tech, 2026)
+
+- Entry / 0–3 yrs: 1 page strict
+- Mid / 3–8 yrs: 1–2 pages, 1 preferred
+- **Senior / 8+ yrs (Abdoulaye): 2 pages — sweet spot**
+- Executive (VP+): 2–3 pages
+- Academic CV / Federal: different beasts (4+ pages OK)
+
+3+ pages for a Senior IC role is a red flag. The `resume-coach` agent enforces this.
+
+## Output conventions (recap)
+
+- Job postings input → `job-postings/`
+- Tailored resumes → `tailored-resumes/<slug>/resume.md` (+ optional `resume-ats.md`)
+- Cover letters → `cover-letters/<slug>.md`
+- Slug format: `{company-slug}__{role-slug}__{YYYY-MM-DD}`
+
+## Dual-source resume pattern (visual + ATS divergence)
+
+Each application can have **one** Markdown source or **two**, depending on whether the visual `.docx` and ATS `.docx` should differ in *content* (not just styling):
 
 ```
-in/profile.html
-  → extractResume.ts (Playwright scraping)
-  → src/data/cv.yml (YAML with base64 images)
-  → page.tsx (Next.js rendering)
-  → Beautiful CV webpage
+tailored-resumes/<slug>/
+  resume.md       → resume.docx        (V2_McDonald's-styled, for human/recruiter sharing)
+  resume-ats.md   → resume-ats.docx    (single-column ATS-safe, for portal upload)
 ```
 
-### Important Files
+- **If only `resume.md` exists**: the build script uses it for both `.docx` outputs. Default for new applications.
+- **If `resume-ats.md` also exists**: the build script uses it for the ATS variant. Lets the ATS version diverge — typically tighter (shorter tagline, fewer roles, combined Certs+Education section). The visual version stays richer.
+- **Always edit the Markdown, never the `.docx` directly.** `python3 scripts/build-application-docx.py <slug>` regenerates both `.docx` files from Markdown source — direct `.docx` edits get overwritten.
+- **Section heading variant supported**: `## CERTIFICATIONS & EDUCATION` (combined) renders alongside the standard separate `## CERTIFICATIONS` + `## EDUCATION` form.
 
-- `src/data/cv.yml` - Main CV data source (auto-generated, includes base64 images)
-- `src/data/override-cv.yml` - Optional manual override (checked first by `page.tsx`)
-- `src/data/technical-skills.md` - Markdown content for technical skills section
-- `src/extractResume/template.html` - Mustache template for CV HTML (used during extraction for image conversion)
-- `in/profile.html` - Input: LinkedIn profile HTML (user-provided)
-- `in/*.jpg` - Optional: Override images for companies/schools (filename must match exact name)
-
-### TypeScript Configuration
-
-- Path alias: `@/*` maps to `./src/*`
-- Strict mode enabled
-- Target: ES5
-
-### Styling
-
-- Tailwind CSS with custom gradient colors (primary/secondary defined in `tailwind.config.ts`)
-- Print-optimized styles with `print:` variants
-- Custom icon components in `src/icons/`
-
-## Development Notes
-
-- The extraction script (`extractResume.ts`) is a Playwright test that doesn't actually test anything - it's a script that leverages Playwright's browser automation
-- Images are embedded as base64 to create a self-contained CV (no external image dependencies)
-- The CV calculates years of experience by parsing the first and last project dates
-- HTML descriptions from LinkedIn are cleaned (removes `<br>` tags and `<p>` tags, converts to newlines)
-- The app supports both LinkedIn-fetched images and locally overridden images for companies/schools
+If you find yourself diverging the same way across multiple applications (e.g., always dropping the same role from ATS versions), that's a signal the canonical source resumes in `resume-data/` should be split into "full" vs "tight" variants — surface it to the user, don't silently drift.

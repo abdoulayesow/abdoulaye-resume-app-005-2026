@@ -1,41 +1,64 @@
 ---
 name: summary-generator
-description: Generates session summaries and resume prompts for multi-session work. Use when completing features, before context limits (~50% capacity), or when user says "summary", "wrap up", "save progress", "end session". Creates markdown in .claude/summaries/ with completed work, files modified, and restart instructions.
-allowed-tools: Read, Glob, Grep, Bash(git diff:*), Bash(git log:*), Bash(git status:*), Write
+description: Generates session summaries and resume prompts for multi-session work on this resume-tailoring + Next.js CV project. Use when completing application pipelines, tailoring sessions, web-app changes, before context limits (~50% capacity), or when user says "summary", "wrap up", "save progress", "end session". Creates markdown in .claude/summaries/YYYY-MM-DD/ with completed work, files modified, and a copy-paste resume prompt.
+allowed-tools: Read, Edit, Glob, Grep, Bash(git diff:*), Bash(git log:*), Bash(git status:*), Write
 ---
 
 # Session Summary Generator
 
 ## Overview
 
-This skill creates comprehensive session summaries for complex multi-session work, enabling seamless resumption of tasks. It generates a markdown file in `.claude/summaries/` with a standardized format.
+Creates session summaries for multi-session work on this repo, enabling seamless resumption. Generates a Markdown file in `.claude/summaries/YYYY-MM-DD/` with a standardized format, plus a self-reflection step that updates auto memory.
+
+## Project context this skill serves
+
+This repo has two intertwined goals (see `CLAUDE.md`):
+1. **Web-rendered CV** (Next.js 14 app at `/agile-coach`, `/product-manager-ai-ml`)
+2. **Application toolkit** — tailor resumes + cover letters to specific job postings, ATS-optimized
+
+When summarizing, segment the session's work by which goal it served — the reader resuming weeks later needs to know whether they're picking up web-app work, a job application, or skills/agent infrastructure.
 
 ## When to Use
 
-Trigger this skill when:
-- User explicitly requests a summary ("generate summary", "wrap up", "save progress")
-- Completing a significant feature or refactor
-- Conversation context is reaching limits (~50% before auto-compact)
+- User requests a summary ("generate summary", "wrap up", "save progress", "end session")
+- Completing a job application pipeline (resume + cover letter + audit shipped)
+- Completing a feature/refactor on the Next.js app
+- Adding/modifying skills, agents, hooks, or CLAUDE.md
+- Conversation context reaching ~50% before auto-compact
 - Before starting a new chat session
-- When collaborating with team members on the same feature
-
-### Auto-Suggest Triggers
-
-Proactively suggest generating a summary when:
-- Multiple files have been modified in the session
-- A feature implementation is complete
-- The conversation has been long (many exchanges)
-- User mentions ending their work session
 
 ## Output Location
 
-Session summaries are stored in: `.claude/summaries/YYYY-MM-DD_feature-name.md`
+```
+.claude/summaries/YYYY-MM-DD/YYYY-MM-DDTHH-MM_feature-name.md
+```
+
+- **Folder**: date portion of the filename
+- **Filename**: `YYYY-MM-DDTHH-MM_kebab-feature-name.md` (time from current timestamp; `-` instead of `:` for filesystem safety)
+- **Feature name**: kebab-case, descriptive (`hpe-application-trial`, `single-page-redesign`, `tailor-resume-skill-build`, etc.)
+
+## Template Tiers
+
+Choose based on session scope:
+
+### Lean Summary
+Use for: short or narrow sessions — config tweaks, single-file fixes, small CLAUDE.md edits, single-skill additions.
+
+### Full Summary
+Use for: feature implementation, multi-step work, full application pipelines, refactors, sessions with significant design decisions (e.g., adding a new agent + skill + CLAUDE.md update).
+
+See [TEMPLATE.md](TEMPLATE.md) for both templates.
+
+## Guidelines
+
+Follow these when gathering information and writing the summary:
+
+- **Token efficiency** (`guidelines/token-efficiency.md`): Search before reading, combine operations, scope searches to relevant dirs, don't re-read files already in context. Keep summary prose concise — bullets over paragraphs.
+- **Command accuracy** (`guidelines/command-accuracy.md`): Use forward slashes in all paths, verify paths with Glob before referencing them in the summary, copy exact file paths from tool output.
 
 ## Instructions
 
 ### Step 1: Analyze Current Work
-
-Run these commands to understand what was done:
 
 ```bash
 git status
@@ -44,145 +67,83 @@ git log --oneline -10
 ```
 
 Review the conversation history to identify:
-- What was accomplished
-- Key decisions made
+- What was accomplished (resumes tailored, skills/agents created, web-app changes)
+- Key decisions made (positioning, design choices, ATS trade-offs)
 - Files created or modified
-- Any remaining tasks
+- New entries added to `applications-log.md` (if a job application was prepared)
+- Remaining tasks
 
-### Step 2: Generate Summary File
+### Step 2: Choose Template Tier
 
-Create the summary using the template in [TEMPLATE.md](TEMPLATE.md).
+- **Lean**: short session, narrow scope, ≤5 files changed
+- **Full**: multi-step work, architectural decisions, ≥5 files touched, or any complete application pipeline
 
-Key sections to include:
-1. **Overview**: Brief description of session focus
-2. **Completed Work**: Bullet points of accomplishments
-3. **Key Files Modified**: Table of files and changes
-4. **Design Patterns Used**: Important architectural decisions
-5. **Remaining Tasks**: What's left to do
-6. **Resume Prompt**: Copy-paste instructions for next session
+### Step 3: Generate Summary File
 
-### Step 3: Create Resume Prompt
+Use the appropriate template from [TEMPLATE.md](TEMPLATE.md). Group "Completed Work" by category — for this repo good categories are:
 
-The resume prompt should include:
-- **Token optimization directive**: Reference to token-optimization.md guidelines (MANDATORY - include at the top)
+- **Application pipeline** (job-postings/, tailored-resumes/, cover-letters/ outputs)
+- **Toolkit infrastructure** (.claude/skills/, .claude/agents/, hooks, settings)
+- **Web app** (src/, package.json, scripts/)
+- **Documentation** (CLAUDE.md, READMEs, applications-log.md)
+- **Source data** (resume-data/, docs/resume/)
+
+### Step 4: Create Resume Prompt
+
+The resume prompt should be copy-paste ready and include:
 - Context reference to the summary file
 - Specific file paths to review first
 - Current status and immediate next steps
-- Any blockers or decisions that need user input
+- Any blockers or decisions needing user input
+- A reminder to read `CLAUDE.md` and `applications-log.md` for project state
 
-**IMPORTANT**: Always start the resume prompt with:
-```
-IMPORTANT: Follow guidelines from `.claude/skills/summary-generator/guidelines/`:
-- **token-optimization.md**: Use Grep before Read, Explore agent for multi-file searches, reference summaries
-- **command-accuracy.md**: Verify paths with Glob, check import patterns, read types before implementing
-- **build-verification.md**: Run lint/typecheck/build before committing, fix warnings not just errors
-- **refactoring-safety.md**: Zero behavioral changes, preserve exports, verify after each step
-- **code-organization.md**: Use barrel exports, extract config, split large components
-```
+### Step 5: Session Retrospective (Full template only)
 
-### Step 4: Analyze Token Usage
+Provide an honest, qualitative assessment:
+- **Efficiency**: Good / Fair / Poor with one-sentence justification
+- **What went well**: bullets
+- **What could improve**: bullets
+- **Notable issues**: only if there were actual errors/failures
 
-Review the conversation for token efficiency opportunities using [analyzers/token-analyzer.md](analyzers/token-analyzer.md) and [guidelines/token-optimization.md](guidelines/token-optimization.md).
+Do not fabricate token counts, command totals, or scoring numbers. If you can't measure it, don't report it.
 
-**Look for:**
-1. **File Reading Patterns**
-   - Files read multiple times → Suggest caching or using Grep
-   - Large files read fully when Grep would suffice
-   - Reading generated files (node_modules, build artifacts)
+### Step 6: Self-Reflection & Memory Update
 
-2. **Search Inefficiencies**
-   - Redundant searches → Recommend consolidating queries
-   - Overly broad glob patterns
-   - Multiple searches that could be combined
+Review the session for recurring mistakes and persist learnings to auto memory. Runs for **both** Lean and Full summaries.
 
-3. **Response Verbosity**
-   - Verbose explanations → Note opportunities for conciseness
-   - Repeated explanations of same concepts
-   - Unnecessary multi-paragraph responses for simple tasks
+**What to look for:**
+- Commands that failed and had to be retried (wrong flags, missing tools like `pandoc`, bad paths)
+- Edit failures requiring multiple attempts
+- Patterns you discovered mid-session that would have saved time if known upfront
+- Workarounds for tooling quirks (e.g., docx generation, V2 layout fidelity)
+- Application-pipeline learnings (e.g., a JD that was filled, an ATS rule that mattered)
 
-4. **Good Practices to Acknowledge**
-   - Effective use of Grep before Read
-   - Targeted searches with appropriate scope
-   - Concise, actionable responses
-   - Efficient agent usage
+**What to do:**
+1. Scan the conversation for failed tool calls, error outputs, and retry patterns
+2. For each recurring or avoidable mistake, check if it's already in auto memory (`MEMORY.md` or topic files)
+3. If not already recorded, write it to the appropriate memory file — concise, actionable, with the fix
+4. If an existing memory entry is wrong or outdated, update or remove it
 
-**Generate token usage report with:**
-- Estimated total tokens (use chars/4 approximation)
-- Token breakdown by category (file ops, code gen, explanations, searches)
-- Efficiency score (0-100) using scoring system from token-analyzer.md
-- Top 5 optimization opportunities (prioritized by impact)
-- Notable good practices observed
-
-See [analyzers/token-analyzer.md](analyzers/token-analyzer.md) for detailed analysis methodology.
-
-### Step 5: Analyze Command Accuracy
-
-Review tool calls for accuracy and error patterns using [analyzers/command-analyzer.md](analyzers/command-analyzer.md) and [guidelines/command-accuracy.md](guidelines/command-accuracy.md).
-
-**Look for:**
-1. **Failed Commands and Causes**
-   - Path errors (backslashes, wrong case, file not found)
-   - Import errors (wrong module path, wrong import style)
-   - Type errors (property doesn't exist, type mismatch)
-   - Edit errors (string not found, whitespace issues)
-
-2. **Error Patterns**
-   - Categorize by type: path, syntax, permission, logic
-   - Identify recurring issues (same mistake multiple times)
-   - Note severity: critical, high, medium, low
-   - Calculate time wasted on failures and retries
-
-3. **Recovery and Improvements**
-   - How quickly errors were fixed
-   - Whether verification prevented errors
-   - Improvements from previous sessions
-   - Good patterns that prevented errors
-
-**Generate command accuracy report with:**
-- Total commands executed
-- Success rate percentage
-- Failure breakdown by category
-- Top 3 recurring issues with root cause analysis
-- Actionable recommendations for prevention
-- Improvements observed from past sessions
-
-See [analyzers/command-analyzer.md](analyzers/command-analyzer.md) for detailed analysis methodology.
+**What NOT to save:**
+- One-off typos or trivial mistakes that won't recur
+- Session-specific context (current job application details, temporary state)
+- Anything that duplicates CLAUDE.md instructions
 
 ## Example Usage
 
 When user says: "Let's wrap up for today"
 
-Response:
 1. Analyze git changes and conversation history
-2. Create `.claude/summaries/2025-12-30_enrollment-improvements.md`
-3. Provide the resume prompt with token optimization directive
-4. Suggest: "When context gets long (~40% tokens), start a new chat with this resume prompt"
-
-Example resume prompt output:
-```
-Resume enrollment improvements session.
-
-IMPORTANT: Follow guidelines from `.claude/skills/summary-generator/guidelines/`:
-- **token-optimization.md**: Use Grep before Read, Explore agent for multi-file searches, reference summaries
-- **command-accuracy.md**: Verify paths with Glob, check import patterns, read types before implementing
-- **build-verification.md**: Run lint/typecheck/build before committing, fix warnings not just errors
-- **refactoring-safety.md**: Zero behavioral changes, preserve exports, verify after each step
-- **code-organization.md**: Use barrel exports, extract config, split large components
-
-## Context
-Previous session completed:
-- Added middle name support to enrollment form
-- Updated validation for optional middle name field
-- Added i18n translations for new field
-
-Session summary: .claude/summaries/2025-12-30_enrollment-improvements.md
-...
-```
+2. Create `.claude/summaries/2026-04-22/2026-04-22T18-30_hpe-application-trial.md`
+3. Provide the resume prompt
+4. Suggest: "When context gets long, start a new chat with this resume prompt"
 
 ## Tips
 
 - Keep summaries focused on a single feature or area
 - Include exact file paths for easy navigation
-- Note any environmental setup needed (database migrations, etc.)
+- Note any environmental setup needed (python-docx install, pandoc not available, etc.)
 - Flag any blocking issues or decisions made
-- Reference the CLAUDE.md file patterns when applicable
+- For application sessions, always link to the relevant `tailored-resumes/<slug>/` and `cover-letters/<slug>.md` paths
+- Reference `CLAUDE.md` for project conventions
+- If the summary documents a job application, also note the row added to `applications-log.md`

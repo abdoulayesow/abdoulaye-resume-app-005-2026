@@ -1,235 +1,198 @@
-# Session Summary Template
+# Session Summary Templates
 
-Use this template when generating session summaries. Copy and adapt as needed.
+Two tiers: **Lean** for short/narrow sessions, **Full** for substantial work.
 
 ---
+
+## Lean Template
+
+For config changes, single-skill edits, small bug fixes, simple commits.
 
 ```markdown
 # Session Summary: [FEATURE_NAME]
 
-**Date:** YYYY-MM-DD
-**Session Focus:** [Brief description of what was worked on]
-
----
-
-## Overview
-
-[1-2 paragraph summary of the session's goals and outcomes]
-
----
+**Date:** YYYY-MM-DD HH:MM
+**Session Focus:** [one-line description]
 
 ## Completed Work
 
-### [Category 1 - e.g., "Backend Changes"]
-- [Specific accomplishment with context]
-- [Another accomplishment]
-
-### [Category 2 - e.g., "Frontend Updates"]
-- [Specific accomplishment]
-- [Another accomplishment]
-
-### [Category 3 - e.g., "Bug Fixes"]
-- [What was fixed and why]
-
----
+- [bullet]
+- [bullet]
 
 ## Key Files Modified
 
 | File | Changes |
 |------|---------|
-| `path/to/file1.tsx` | [Brief description of changes] |
-| `path/to/file2.ts` | [Brief description of changes] |
-| `path/to/file3.ts` | [Brief description of changes] |
+| `path/to/file.md` | [brief description] |
 
----
+## Current State
 
-## Design Patterns Used
+[git status: what's committed vs pending, branch state]
 
-- **[Pattern Name]**: [How it was applied and why]
-- **[Convention from CLAUDE.md]**: [Reference to project conventions followed]
+## Next Steps
 
----
+1. [next task]
+2. [following task]
 
-## Current Plan Progress
+## Mistakes & Learnings
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Task 1 | **COMPLETED** | [Any notes] |
-| Task 2 | **COMPLETED** | [Any notes] |
-| Task 3 | **PENDING** | [What remains] |
+[Only if there were failed commands, retries, or avoidable mistakes]
 
----
-
-## Remaining Tasks / Next Steps
-
-| Task | Priority | Notes |
-|------|----------|-------|
-| [Next task] | High | [Context or dependencies] |
-| [Another task] | Medium | [Context] |
-
-### Blockers or Decisions Needed
-- [Any blockers discovered]
-- [Decisions that need user input]
-
----
-
-## Key Files Reference
-
-| File | Purpose |
-|------|---------|
-| `path/to/critical/file.tsx` | [Why this file is important] |
-| `path/to/related/file.ts` | [Relationship to the work] |
-
----
-
-## Session Retrospective
-
-### Token Usage Analysis
-
-**Estimated Total Tokens:** ~XXX,XXX tokens
-**Efficiency Score:** YY/100
-
-#### Token Breakdown:
-| Category | Tokens | Percentage |
-|----------|--------|------------|
-| File Operations | XX,XXX | XX% |
-| Code Generation | XX,XXX | XX% |
-| Planning/Design | XX,XXX | XX% |
-| Explanations | XX,XXX | XX% |
-| Search Operations | X,XXX | X% |
-
-#### Optimization Opportunities:
-
-1. ⚠️ **[Issue Type]**: [Specific description]
-   - Current approach: [What was done]
-   - Better approach: [Recommendation]
-   - Potential savings: ~XXX tokens
-
-2. ⚠️ **[Issue Type]**: [Specific description]
-   - Current approach: [What was done]
-   - Better approach: [Recommendation]
-   - Potential savings: ~XXX tokens
-
-[Continue for top 5 most impactful opportunities]
-
-#### Good Practices:
-
-1. ✅ **[Practice]**: [What worked well and why]
-2. ✅ **[Practice]**: [What worked well and why]
-
-[Note 2-3 notable good practices observed]
-
-### Command Accuracy Analysis
-
-**Total Commands:** XXX
-**Success Rate:** YY.Y%
-**Failed Commands:** ZZ (Z.Z%)
-
-#### Failure Breakdown:
-| Error Type | Count | Percentage |
-|------------|-------|------------|
-| Path errors | X | XX% |
-| Syntax errors | X | XX% |
-| Permission errors | X | XX% |
-| Logic errors | X | XX% |
-
-#### Recurring Issues:
-
-1. ⚠️ **[Error Type]** (X occurrences)
-   - Root cause: [Why this happened]
-   - Example: [Specific instance from session]
-   - Prevention: [How to avoid in future]
-   - Impact: [Severity level and consequences]
-
-2. ⚠️ **[Error Type]** (X occurrences)
-   - Root cause: [Analysis of root cause]
-   - Example: [Instance]
-   - Prevention: [Strategy]
-   - Impact: [Severity]
-
-[Continue for top 3 most important recurring issues]
-
-#### Improvements from Previous Sessions:
-
-1. ✅ **[Improvement]**: [What was learned/applied from past sessions]
-2. ✅ **[Improvement]**: [Pattern that worked well]
-
-[Note improvements and good patterns observed]
-
----
-
-## Lessons Learned
-
-### What Worked Well
-- [Efficient pattern or approach that saved time/tokens]
-- [Good decision that prevented errors]
-- [Effective tool or technique used]
-
-### What Could Be Improved
-- [Pattern to avoid next time]
-- [Alternative approach to consider]
-- [Verification step to add]
-
-### Action Items for Next Session
-- [ ] [Specific improvement to implement]
-- [ ] [Pattern to remember]
-- [ ] [Tool usage adjustment]
-- [ ] [Verification checklist item]
-
----
+- **[mistake]** → Fix: [what worked]. Saved to memory: [yes/no]
 
 ## Resume Prompt
 
-```
+` ` `
 Resume [FEATURE_NAME] session.
-
-IMPORTANT: Follow guidelines from `.claude/skills/summary-generator/guidelines/`:
-- **token-optimization.md**: Use Grep before Read, Explore agent for multi-file searches, reference summaries
-- **command-accuracy.md**: Verify paths with Glob, check import patterns, read types before implementing
-- **build-verification.md**: Run lint/typecheck/build before committing, fix warnings not just errors
-- **refactoring-safety.md**: Zero behavioral changes, preserve exports, verify after each step
-- **code-organization.md**: Use barrel exports, extract config, split large components
 
 ## Context
 Previous session completed:
-- [Key accomplishment 1]
-- [Key accomplishment 2]
-- [Key accomplishment 3]
+- [key accomplishment 1]
+- [key accomplishment 2]
 
-Session summary: .claude/summaries/YYYY-MM-DD_feature-name.md
+Session summary: .claude/summaries/YYYY-MM-DD/YYYY-MM-DDTHH-MM_feature-name.md
+Project context: CLAUDE.md, applications-log.md
+
+## Key Files to Review First
+- path/to/main/file (primary changes)
+
+## Current Status
+[brief status]
+
+## Next Steps
+1. [immediate next task]
+2. [following task]
+` ` `
+```
+
+---
+
+## Full Template
+
+For feature implementation, application pipelines, refactors, multi-step work.
+
+```markdown
+# Session Summary: [FEATURE_NAME]
+
+**Date:** YYYY-MM-DD HH:MM
+**Session Focus:** [brief description]
+
+## Overview
+
+[1-2 paragraph summary of goals and outcomes]
+
+## Completed Work
+
+### Application Pipeline
+- [job posting saved, analysis written, resume tailored, etc.]
+
+### Toolkit Infrastructure
+- [skills/agents/hooks added or modified]
+
+### Web App
+- [src/, components, scripts changes]
+
+### Documentation
+- [CLAUDE.md updates, READMEs, applications-log.md row added]
+
+(Drop categories that don't apply this session.)
+
+## Key Files Modified
+
+| File | Changes |
+|------|---------|
+| `path/to/file1.md` | [brief description] |
+| `path/to/file2.tsx` | [brief description] |
+
+## Design Decisions
+
+- **[Decision]**: [what was chosen and why; trade-off considered]
+
+## Plan Progress
+
+| Task | Status | Notes |
+|------|--------|-------|
+| Task 1 | **COMPLETED** | [notes] |
+| Task 2 | **PENDING** | [what remains] |
+
+## Application Tracking (if applicable)
+
+| Slug | Status | Match Score | Files Generated |
+|------|--------|-------------|-----------------|
+| `company__role__date` | prepared | 91/100 | resume.docx, resume-ats.docx, cover.docx |
+
+## Next Steps
+
+1. [next task with context]
+2. [following task]
+
+### Blockers or Decisions Needed
+- [any blockers discovered]
+
+## Session Retrospective
+
+**Efficiency:** [Good / Fair / Poor] — [1-sentence justification]
+
+### What Went Well
+- [bullet]
+
+### What Could Improve
+- [bullet]
+
+### Notable Issues
+- [only if there were actual errors/failures worth documenting]
+
+## Lessons Learned
+
+- [pattern or insight worth remembering for future sessions]
+
+## Mistakes & Learnings
+
+[Review failed commands, edit retries, tool gaps from this session]
+
+| Mistake | Root Cause | Fix | Saved to Memory? |
+|---------|-----------|-----|------------------|
+| [failed command/error] | [why it happened] | [what worked] | [yes — file.md / no — one-off] |
+
+## Resume Prompt
+
+` ` `
+Resume [FEATURE_NAME] session.
+
+## Context
+Previous session completed:
+- [key accomplishment 1]
+- [key accomplishment 2]
+- [key accomplishment 3]
+
+Session summary: .claude/summaries/YYYY-MM-DD/YYYY-MM-DDTHH-MM_feature-name.md
+Project context: CLAUDE.md, applications-log.md, docs/AUTOMATION_ROADMAP.md (if relevant)
 
 ## Key Files to Review First
 - path/to/main/file.tsx (primary changes)
-- path/to/related/file.ts (supporting changes)
+- path/to/related/file.md (supporting changes)
 
 ## Current Status
-[Brief status statement]
+[brief status statement]
 
 ## Next Steps
-1. [Immediate next task]
-2. [Following task]
-3. [Third task]
+1. [immediate next task]
+2. [following task]
+3. [third task]
 
 ## Important Notes
-- [Any critical context]
-- [Environment setup if needed]
-- [Blockers or decisions needed]
+- [critical context]
+- [blockers or decisions needed]
+` ` `
 ```
 
 ---
 
-## Notes
+## Template Tips
 
-- [Any additional context for future reference]
-- [Lessons learned or patterns discovered]
-```
-
----
-
-## Template Usage Tips
-
-1. **Feature Name**: Use kebab-case for the filename (e.g., `enrollment-improvements`)
-2. **Completed Work**: Group by category for easier scanning
+1. **Feature Name**: Use kebab-case for the filename (e.g., `hpe-application-trial`, `tailor-resume-skill-build`)
+2. **Completed Work**: Group by the project's natural categories (Application pipeline / Toolkit / Web app / Documentation)
 3. **Files Table**: Include only files with significant changes
-4. **Resume Prompt**: Make it copy-paste ready for the next session
-5. **Status**: Use bold for emphasis (COMPLETED, PENDING, IN_PROGRESS)
+4. **Resume Prompt**: Make it copy-paste ready — must work with zero conversation context
+5. **Retrospective**: Be honest — don't fabricate metrics you can't measure
+6. **Application Tracking**: Include this section ONLY when a job application was prepared this session
