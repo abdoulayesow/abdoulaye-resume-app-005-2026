@@ -30,6 +30,12 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LOG_PATH = REPO_ROOT / "applications-log.md"
+SLUG_PATTERN = re.compile(r"^[a-z0-9-]+__[a-z0-9-]+__\d{4}-\d{2}-\d{2}$")
+TABLE_SEPARATOR_PATTERN = re.compile(r"\s*\|[\s|:\-]+\|\s*$")
+
+
+def strip_bold(s: str) -> str:
+    return re.sub(r"\*+", "", s)
 
 
 def read_file(path: Path) -> str | None:
@@ -40,9 +46,13 @@ def read_file(path: Path) -> str | None:
 
 
 def grab_field(text: str, label_pattern: str) -> str | None:
-    """Return the value after `- **{label}...**:` on a single line, or None."""
-    pattern = rf"^-\s*\*\*{label_pattern}[^*]*\*\*:?\s*(.+?)$"
-    m = re.search(pattern, text, re.MULTILINE)
+    """Return the value after `- {label}:` on a single line, with or without bold.
+
+    Accepts both `- **Location / remote policy:** value` and `- Location: value`.
+    """
+    bolded = rf"^-\s*\*\*{label_pattern}[^*]*\*\*:?\s*(.+?)$"
+    plain = rf"^-\s*{label_pattern}[^\n]*?:\s*(.+?)$"
+    m = re.search(bolded, text, re.MULTILINE) or re.search(plain, text, re.MULTILINE)
     return m.group(1).strip() if m else None
 
 
@@ -50,14 +60,19 @@ def parse_analysis(text: str) -> dict[str, str]:
     """Extract Company, Role, Location, Closes, Salary band from analysis.md."""
     out: dict[str, str] = {}
 
-    h1 = re.search(r"^#\s+JD Analysis:\s*(.+?)\s+[—–-]\s+(.+?)\s*$", text, re.MULTILINE)
+    # Prefer em-dash / en-dash (used by the canonical JD analysis format); fall back
+    # to space-hyphen-space only if neither is present, so company/role names that
+    # contain hyphens don't get split at the wrong point.
+    h1 = re.search(r"^#\s+JD Analysis:\s*(.+?)\s+[—–]\s+(.+?)\s*$", text, re.MULTILINE)
+    if h1 is None:
+        h1 = re.search(r"^#\s+JD Analysis:\s*(.+?)\s+-\s+(.+?)\s*$", text, re.MULTILINE)
     if h1:
         out["company"] = h1.group(1).strip()
         out["role"] = h1.group(2).strip()
 
     loc = grab_field(text, r"Location")
     if loc:
-        loc = re.sub(r"\*+", "", loc)
+        loc = strip_bold(loc)
         # Split on period followed by whitespace + uppercase letter (sentence boundary
         # heuristic that survives "avg.", "e.g.", "etc.").
         parts = re.split(r"\.(?=\s+[A-Z])", loc, maxsplit=1)
@@ -74,7 +89,7 @@ def parse_analysis(text: str) -> dict[str, str]:
 
     comp_line = grab_field(text, r"Comp range") or grab_field(text, r"Comp")
     if comp_line:
-        comp_clean = re.sub(r"\*+", "", comp_line)
+        comp_clean = strip_bold(comp_line)
         range_m = re.search(
             r"\$[\d,]+(?:\.\d+)?\s*[KkMm]?\s*[–\-]\s*\$[\d,]+(?:\.\d+)?\s*[KkMm]?",
             comp_clean,
@@ -141,35 +156,44 @@ def merge_row(existing: str, fresh: str) -> str:
 
 
 def upsert_row(log_text: str, slug: str, new_row: str) -> str | None:
-    """Insert new_row under '## Active applications', or update existing row(s) in place.
+    """Insert new_row under '## Active applications', or update an existing row.
+
+    Updates only happen for rows in the Active section — rows in Closed (or any
+    other section) are left untouched even if they share the slug, since closed
+    applications shouldn't be revived by re-running /apply.
 
     On update: preserves user-managed columns (Status, Applied, Notes). Refreshes
     Company / Role / Location / Closes / Match / Salary band from `new_row`.
 
     Returns the new log text, or None if the Active section couldn't be located
-    and no existing row matched.
+    and no Active-section row matched.
     """
     lines = log_text.splitlines()
     slug_pattern = re.compile(rf"\|\s*`{re.escape(slug)}`\s*\|")
-    has_existing = any(slug_pattern.search(ln) for ln in lines)
+
+    # First pass: find whether an Active-section row exists for this slug.
+    in_active_scan = False
+    has_active_row = False
+    for line in lines:
+        stripped = line.strip()
+        if stripped.lower() == "## active applications":
+            in_active_scan = True
+            continue
+        if in_active_scan and stripped.startswith("## "):
+            in_active_scan = False
+            continue
+        if in_active_scan and slug_pattern.search(line):
+            has_active_row = True
+            break
 
     out: list[str] = []
     in_active = False
-    seen_separator = False
-    replaced_first = False
-    inserted_at_separator = False
+    done = False  # set once we've either replaced an existing row or inserted a new one
 
     for line in lines:
-        if slug_pattern.search(line):
-            if not replaced_first:
-                out.append(merge_row(line, new_row))
-                replaced_first = True
-            continue
-
         stripped = line.strip()
         if stripped.lower() == "## active applications":
             in_active = True
-            seen_separator = False
             out.append(line)
             continue
 
@@ -178,23 +202,27 @@ def upsert_row(log_text: str, slug: str, new_row: str) -> str | None:
             out.append(line)
             continue
 
+        if in_active and slug_pattern.search(line):
+            if not done:
+                out.append(merge_row(line, new_row))
+                done = True
+            # Drop additional duplicate rows in the Active section (de-dupe).
+            continue
+
         if (
             in_active
-            and not has_existing
-            and not inserted_at_separator
-            and not seen_separator
-            and re.match(r"\s*\|[\s|:\-]+\|\s*$", line)
-            and "---" in line
+            and not has_active_row
+            and not done
+            and TABLE_SEPARATOR_PATTERN.match(line)
         ):
             out.append(line)
             out.append(new_row)
-            inserted_at_separator = True
-            seen_separator = True
+            done = True
             continue
 
         out.append(line)
 
-    if not replaced_first and not inserted_at_separator:
+    if not done:
         return None
 
     trailing = "\n" if log_text.endswith("\n") else ""
@@ -206,6 +234,13 @@ def main() -> int:
         print(__doc__, file=sys.stderr)
         return 2
     slug = sys.argv[1]
+
+    if not SLUG_PATTERN.fullmatch(slug):
+        print(
+            f"invalid slug: {slug!r} (expected {{company}}__{{role}}__YYYY-MM-DD)",
+            file=sys.stderr,
+        )
+        return 2
 
     analysis_path = REPO_ROOT / "job-postings" / slug / "analysis.md"
     audit_path = REPO_ROOT / "tailored-resumes" / slug / "ats-audit.md"

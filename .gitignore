@@ -37,3 +37,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .idea
+
+# office app lock files (LibreOffice / Word) — appear when files are open
+.~lock.*#
+~$*
+
+# /apply auto-fix backups (keep the working resume.md as source of truth)
+tailored-resumes/*/resume.pre-fix*.md
+tailored-resumes/*/resume.proposed.md

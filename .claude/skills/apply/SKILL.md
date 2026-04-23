@@ -146,7 +146,7 @@ When the user replies:
 - `n` / `no` / `skip` → continue to Step 4.
 
 - `y` / `yes` / `apply` → **auto-fix flow**:
-  1. `cp tailored-resumes/{slug}/resume.md tailored-resumes/{slug}/resume.pre-fix.md` (backup).
+  1. **Backup with auto-suffix** so re-runs don't clobber prior backups: if `tailored-resumes/{slug}/resume.pre-fix.md` does not exist, use that path. Otherwise try `resume.pre-fix-2.md`, `resume.pre-fix-3.md`, ... and use the first one that does not exist. Run `cp tailored-resumes/{slug}/resume.md <chosen-path>`. Remember the chosen path as `pre_fix_backup_path` for the Step 7 summary.
   2. Re-invoke `/tailor-resume {slug}` with an inline directive appended to the call:
      ```
      Apply these specific fixes from the resume-review:
@@ -155,7 +155,7 @@ When the user replies:
        3. {fix 3}
      ```
   3. Re-run `/ats-audit tailored-resumes/{slug}/resume.md` so `ats-audit.md` reflects the post-fix state.
-  4. **Do NOT re-run `/resume-review`** — it would loop back to Pause 2.
+  4. **Do NOT re-run `/resume-review`** — it would loop back to Pause 2. The post-fix resume gets the mechanical ATS re-score but is not re-coach-reviewed; surface this in the Step 7 summary.
   5. Continue to Step 4.
 
 - `show diff` / `diff` → write the proposed rewrite to `tailored-resumes/{slug}/resume.proposed.md` (don't touch `resume.md` yet), run `diff -u tailored-resumes/{slug}/resume.md tailored-resumes/{slug}/resume.proposed.md`, print the diff, re-prompt y/n. On final `y`: `mv resume.proposed.md resume.md`. On `n`: `rm resume.proposed.md`. Then continue to Step 4.
@@ -212,9 +212,10 @@ Next:
 ============================================================
 ```
 
-If the auto-fix flow ran in Pause 2, also include this line above "Next:":
+If the auto-fix flow ran in Pause 2, also include these two lines above "Next:":
 ```
-Backup of pre-fix resume preserved at: tailored-resumes/{slug}/resume.pre-fix.md
+Post-fix resume re-audited (ATS only); coach review NOT re-run — re-run /resume-review manually if you want a fresh coach pass.
+Backup of pre-fix resume preserved at: {pre_fix_backup_path}
 ```
 
 ## Recovery
