@@ -37,6 +37,8 @@ Tailored variants are generated under `tailored-resumes/<slug>/` and **must not*
 
 ## Workflow: tailoring a resume to a job
 
+**Recommended:** run `/apply <jd-path-or-url>` to execute the steps below as a single pipeline with two human checkpoints (after JD analysis, after review). The manual steps remain available for single-phase iteration or recovery from a failed pipeline run.
+
 The expected flow:
 
 1. User drops a job posting under `job-postings/`.
@@ -121,6 +123,7 @@ Variants live at `/agile-coach` and `/product-manager-ai-ml`. The single-page re
 
 Located in `.claude/skills/`:
 
+- `/apply` — orchestrates the full pipeline: `/jd-extract` → `/tailor-resume` → `/resume-review` → `/cover-letter` → `.docx` build → `applications-log.md` update. Two human checkpoints (after JD analysis, after review). Use this for new applications; the individual skills below are for single-step iteration or recovery from a failed pipeline run.
 - `/jd-extract` — parse a job posting into structured intel (must-have, keywords, seniority, culture).
 - `/tailor-resume` — produce a tailored resume variant for a specific posting.
 - `/cover-letter` — draft a 1-page cover letter for a tailored application.
@@ -153,6 +156,7 @@ Use these via the Task tool when a workflow needs a focused subagent rather than
 - Job postings input → `job-postings/`
 - Tailored resumes → `tailored-resumes/<slug>/resume.md` (+ optional `resume-ats.md`)
 - Cover letters → `cover-letters/<slug>.md`
+- Application tracking → `applications-log.md` (auto-updated by `/apply`)
 - Slug format: `{company-slug}__{role-slug}__{YYYY-MM-DD}`
 
 ## Dual-source resume pattern (visual + ATS divergence)
