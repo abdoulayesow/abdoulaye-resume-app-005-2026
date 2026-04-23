@@ -92,6 +92,7 @@ B2B SaaS Product Lifecycle • API Design & Integration • Cloud Architecture (
 - **PSM II** – Professional Scrum Master II (2025)
 - **PSK1** – Professional Scrum with Kanban (2022)
 - **SPS** – Scaled Professional Scrum (2022)
+- **Working knowledge:** PMP and ITIL frameworks (applied across Capgemini delivery engagements; uncertified)
 
 ---
 
@@ -123,7 +124,7 @@ SQL (PostgreSQL, MySQL) • Python (Data Analysis) • Tableau • Looker • Go
 API Design (REST, GraphQL) • Cloud Platforms (AWS, Azure, GCP) • Microservices Architecture • Docker • Kubernetes • CI/CD (Jenkins, GitHub Actions) • Git • Linux
 
 **Software Development**  
-Java • Spring Boot • JavaScript • React • Node.js • Python • HTML/CSS • Agile/Scrum • TDD/BDD
+Java (JEE, Spring MVC, Spring Boot) • .NET • JavaScript • React • Node.js • Python • HTML/CSS • Oracle • Agile/Scrum • TDD/BDD
 
 ---
 

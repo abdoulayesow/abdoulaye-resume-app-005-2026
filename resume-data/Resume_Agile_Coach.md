@@ -171,7 +171,10 @@ Jira (Advanced Admin) • Confluence • Rally • Azure DevOps • VersionOne �
 Jira Dashboards • Actionable Agile Metrics • Value Stream Mapping • Flow Metrics (Cycle Time, Lead Time, WIP) • Velocity Tracking • Burndown/Burnup Charts • CFD (Cumulative Flow Diagrams)
 
 **Technical Foundation**  
-Java • Spring Boot • Python • CI/CD (Jenkins, GitHub Actions) • Git • Docker • Kubernetes • AWS • Azure • Test Automation • Microservices Architecture
+Java (JEE, Spring MVC, Spring Boot) • .NET • Python • Oracle • CI/CD (Jenkins, GitHub Actions) • Git • Docker • Kubernetes • AWS • Azure • Test Automation • Microservices Architecture
+
+**Delivery Frameworks (Working Knowledge)**  
+PMP • ITIL — applied across Capgemini delivery engagements; uncertified
 
 ---
 

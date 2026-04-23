@@ -19,6 +19,7 @@ A running log of every job application we've prepared in this repo. Most recent 
 
 | Slug | Company | Role | Location | Status | Applied | Closes | Match | Salary band | Notes |
 |---|---|---|---|---|---|---|---|---|---|
+| `deloitte__engineering-managed-services-senior-manager__2026-04-22` | Deloitte | Engineering Managed Services / Senior Manager — AI & Engineering | Not stated | prepared | — | 2026-07-01 | 90/100 | $158,900 – $292,900 |  |
 | `hpe__senior-pm-greenlake-flex__2026-04-22` | HPE | Senior Product Manager, GL Flex Solutions | Hybrid, avg. 2 days/week from an HPE office | submitted | 2026-04-22 | 2026-05-25 | 91/100 | $120,500 – $276,500 | First trial run. CPQ is the biggest gap — frame in cover letter as fast-learn / adjacent experience. Role 2 retitle (Senior Agile Coach & Product Practice Lead) applied before submission. |
 
 ---
