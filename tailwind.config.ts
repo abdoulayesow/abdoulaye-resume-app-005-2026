@@ -7,6 +7,7 @@ const config: Config = {
       fontFamily: {
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
         primary: 'var(--color-primary)',
@@ -14,6 +15,13 @@ const config: Config = {
         accent: 'var(--color-accent)',
         muted: 'var(--color-muted)',
         line: 'var(--color-line)',
+        'bg-dark': 'var(--color-bg-dark)',
+        'bg-dark-elev': 'var(--color-bg-dark-elev)',
+        'edge-idle': 'var(--color-edge-idle)',
+        'edge-signal': 'var(--color-edge-signal)',
+        glow: 'var(--color-glow)',
+        'text-dark': 'var(--color-text-dark)',
+        'text-dark-muted': 'var(--color-text-dark-muted)',
       },
       fontSize: {
         'resume-xs': ['0.6rem', { lineHeight: '0.85rem' }],

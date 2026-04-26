@@ -8,6 +8,18 @@
   --color-accent: #c8943e;
   --color-muted: #64748b;
   --color-line: #d4c5a0;
+  --color-bg-dark: #050b18;
+  --color-bg-dark-elev: #0a1628;
+  --color-edge-idle: rgba(26, 79, 110, 0.45);
+  --color-edge-signal: #f0c674;
+  --color-glow: rgba(240, 198, 116, 0.45);
+  --color-text-dark: #e6edf7;
+  --color-text-dark-muted: rgba(230, 237, 247, 0.62);
+}
+
+.theme-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-dark);
 }
 
 @page {
